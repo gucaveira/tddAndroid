@@ -16,7 +16,8 @@ class LancesLeilaoActivity : AppCompatActivity() {
         if (dadosRecebidos != null) {
             val leilao = intent.extras?.getParcelable<Leilao>("leilao")
             lances_leilao_descricao.text = leilao?.descricao
-
+            lances_leilao_maior_lance.text = leilao?.maiorLance.toString()
+            lances_leilao_menor_lance.text = leilao?.menorLance.toString()
         }
     }
 }

@@ -4,7 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.tccandroid.R
+import com.tccandroid.model.Lance
 import com.tccandroid.model.Leilao
+import com.tccandroid.model.Usuario
 import com.tccandroid.ui.recyclerview.adapter.ListaLeilaoAdapter
 import kotlinx.android.synthetic.main.activity_lista_leilao.*
 
@@ -29,6 +31,8 @@ class ListaLeilaoActivity : AppCompatActivity() {
 
     private fun leiloesDeExemplo(): List<Leilao> {
         val console = Leilao(descricao = "Console")
+        console.propoe(Lance(Usuario("Gustavo"), 200.00))
+        console.propoe(Lance(Usuario("Maria"), 300.00))
         return ArrayList(listOf(console))
     }
 }

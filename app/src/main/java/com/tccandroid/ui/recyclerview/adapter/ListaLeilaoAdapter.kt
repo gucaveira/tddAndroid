@@ -48,9 +48,10 @@ class ListaLeilaoAdapter(
         }
 
         fun vicula(leilao: Leilao) {
+            this.leilao = leilao
             itemView.item_leilao_imagem.setImageResource(R.drawable.img_indisponivel)
             itemView.item_leilao_descricao.text = leilao.descricao
-            this.leilao = leilao
+            itemView.item_leilao_maior_lance.text = leilao.maiorLance.toString()
         }
 
     }
