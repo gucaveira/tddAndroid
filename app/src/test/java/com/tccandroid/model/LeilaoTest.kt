@@ -6,7 +6,7 @@ import org.junit.Test
 class LeilaoTest {
 
     @Test
-    fun getDescricaoQuandoRecebeDescricaoDevolverDescricao() {
+    fun deve_DevolverDescricao_QuandoRecebeDescricao() {
         //criar cenário de teste
         var console = Leilao("Console")
 
@@ -18,7 +18,7 @@ class LeilaoTest {
     }
 
     @Test
-    fun getMaiorLanceQuandoRecebeApenasUmLanceDevolveMaiorLance() {
+    fun deve_DevolveMaiorLance_QuandoRecebeApenasUmLance() {
         val console = Leilao("Console")
         console.propoe(Lance(Usuario("Gustavo"), 200.00))
 
@@ -28,7 +28,7 @@ class LeilaoTest {
     }
 
     @Test
-    fun getMaiorLanceQuandoRecebeMaisDeUmLanceEmOrdemCrescenteDevolveMaiorLance() {
+    fun deve_DevolveMaiorLance_QuandoRecebeMaisDeUmLanceEmOrdemCrescente() {
         val computador = Leilao("Computador")
         computador.propoe(Lance(Usuario("Gustavo"), 1000.00))
         computador.propoe(Lance(Usuario("Maria"), 2000.00))
@@ -39,7 +39,7 @@ class LeilaoTest {
     }
 
     @Test
-    fun getMaiorLanceQuandoRecebeMaisDeUmLanceEmOrdemDecrescenteDevolveMaiorLance() {
+    fun deve_DevolveMaiorLance_QuandoRecebeMaisDeUmLanceEmOrdemDecrescente() {
         val computador = Leilao("Computador")
         computador.propoe(Lance(Usuario("Maria"), 2000.00))
         computador.propoe(Lance(Usuario("Gustavo"), 1000.00))
