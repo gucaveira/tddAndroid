@@ -2,22 +2,17 @@ package com.tccandroid.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
-import java.util.*
 
 @Parcelize
 data class Leilao(
     val descricao: String,
     var maiorLance: Double = Double.NEGATIVE_INFINITY,
-    var menorLance: Double = Double.POSITIVE_INFINITY
+    var menorLance: Double = Double.POSITIVE_INFINITY,
+    val lances: MutableList<Lance> = mutableListOf()
 ) : Parcelable {
 
-    private val lances: List<Lance>
-
-    init {
-        lances = ArrayList<Lance>()
-    }
-
     fun propoe(lance: Lance) {
+        lances.add(lance)
         calculaMairLance(lance.valor)
         calculaMenorLance(lance.valor)
     }
@@ -32,5 +27,9 @@ data class Leilao(
         if (lanceValor > maiorLance) {
             maiorLance = lanceValor
         }
+    }
+
+    fun tresMaioresLance(): List<Lance> {
+        return lances.subList(0, 3)
     }
 }
