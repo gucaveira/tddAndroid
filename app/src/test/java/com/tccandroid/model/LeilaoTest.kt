@@ -3,11 +3,13 @@ package com.tccandroid.model
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
+
 class LeilaoTest {
 
-    val console = Leilao("Console")
-    val usuarioGustavo = Usuario("Gustavo")
-    val usuarioMaria: Usuario = Usuario("Maria")
+    private val console = Leilao("Console")
+    private val usuarioGustavo = Usuario("Gustavo")
+    private val usuarioMaria: Usuario = Usuario("Maria")
+    private val delta = 0.0001
 
 
     @Test
@@ -28,7 +30,7 @@ class LeilaoTest {
 
         val maiorLanceDevolvido = console.maiorLance
 
-        assertEquals(200.00, maiorLanceDevolvido, 0.0001)
+        assertEquals(200.00, maiorLanceDevolvido, delta)
     }
 
     @Test
@@ -38,7 +40,7 @@ class LeilaoTest {
 
         val maiorValorDevolvido = console.maiorLance
 
-        assertEquals(2000.00, maiorValorDevolvido, 0.0001)
+        assertEquals(2000.00, maiorValorDevolvido, delta)
     }
 
     @Test
@@ -48,7 +50,7 @@ class LeilaoTest {
 
         val maiorValorDevolvido = console.maiorLance
 
-        assertEquals(2000.00, maiorValorDevolvido, 0.0001)
+        assertEquals(2000.00, maiorValorDevolvido, delta)
     }
 
     @Test
@@ -57,7 +59,7 @@ class LeilaoTest {
 
         val menorLanceDevolvido = console.menorLance
 
-        assertEquals(200.00, menorLanceDevolvido, 0.0001)
+        assertEquals(200.00, menorLanceDevolvido, delta)
     }
 
     @Test
@@ -67,7 +69,7 @@ class LeilaoTest {
 
         val menorValorDevolvido = console.menorLance
 
-        assertEquals(1000.00, menorValorDevolvido, 0.0001)
+        assertEquals(1000.00, menorValorDevolvido, delta)
     }
 
     @Test
@@ -78,7 +80,7 @@ class LeilaoTest {
 
         val menorLanceDevolvido = console.menorLance
 
-        assertEquals(1000.00, menorLanceDevolvido, 0.0001)
+        assertEquals(1000.00, menorLanceDevolvido, delta)
     }
 
     @Test
@@ -90,5 +92,8 @@ class LeilaoTest {
         val tresMaioresLancesDevolvidos = console.tresMaioresLance()
 
         assertEquals(3, tresMaioresLancesDevolvidos.size)
+        assertEquals(300.00, tresMaioresLancesDevolvidos[0].valor, delta)
+        assertEquals(200.00, tresMaioresLancesDevolvidos[1].valor, delta)
+        assertEquals(100.00, tresMaioresLancesDevolvidos[2].valor, delta)
     }
 }
