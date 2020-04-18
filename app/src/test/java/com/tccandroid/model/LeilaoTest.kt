@@ -5,6 +5,11 @@ import org.junit.Test
 
 class LeilaoTest {
 
+    val console = Leilao("Console")
+    val usuarioGustavo = Usuario("Gustavo")
+    val usuarioMaria: Usuario = Usuario("Maria")
+
+
     @Test
     fun deve_DevolverDescricao_QuandoRecebeDescricao() {
         //criar cenário de teste
@@ -19,8 +24,7 @@ class LeilaoTest {
 
     @Test
     fun deve_DevolveMaiorLance_QuandoRecebeApenasUmLance() {
-        val console = Leilao("Console")
-        console.propoe(Lance(Usuario("Gustavo"), 200.00))
+        console.propoe(Lance(usuarioGustavo, 200.00))
 
         val maiorLanceDevolvido = console.maiorLance
 
@@ -29,30 +33,27 @@ class LeilaoTest {
 
     @Test
     fun deve_DevolveMaiorLance_QuandoRecebeMaisDeUmLanceEmOrdemCrescente() {
-        val computador = Leilao("Computador")
-        computador.propoe(Lance(Usuario("Gustavo"), 1000.00))
-        computador.propoe(Lance(Usuario("Maria"), 2000.00))
+        console.propoe(Lance(usuarioGustavo, 1000.00))
+        console.propoe(Lance(usuarioGustavo, 2000.00))
 
-        val maiorValorDevolvido = computador.maiorLance
+        val maiorValorDevolvido = console.maiorLance
 
         assertEquals(2000.00, maiorValorDevolvido, 0.0001)
     }
 
     @Test
     fun deve_DevolveMaiorLance_QuandoRecebeMaisDeUmLanceEmOrdemDecrescente() {
-        val computador = Leilao("Computador")
-        computador.propoe(Lance(Usuario("Maria"), 2000.00))
-        computador.propoe(Lance(Usuario("Gustavo"), 1000.00))
+        console.propoe(Lance(usuarioMaria, 2000.00))
+        console.propoe(Lance(usuarioGustavo, 1000.00))
 
-        val maiorValorDevolvido = computador.maiorLance
+        val maiorValorDevolvido = console.maiorLance
 
         assertEquals(2000.00, maiorValorDevolvido, 0.0001)
     }
 
     @Test
     fun deve_DevolveMenorLance_QuandoRecebeApenasUmLance() {
-        val console = Leilao("Console")
-        console.propoe(Lance(Usuario("Gustavo"), 200.00))
+        console.propoe(Lance(usuarioGustavo, 200.00))
 
         val menorLanceDevolvido = console.menorLance
 
@@ -61,24 +62,22 @@ class LeilaoTest {
 
     @Test
     fun deve_DevolveMenorLance_QuandoRecebeMaisDeUmLanceEmOrdemCrescente() {
-        val computador = Leilao("Computador")
-        computador.propoe(Lance(Usuario("Gustavo"), 1000.00))
-        computador.propoe(Lance(Usuario("Maria"), 2000.00))
+        console.propoe(Lance(usuarioMaria, 1000.00))
+        console.propoe(Lance(usuarioGustavo, 2000.00))
 
-        val menorValorDevolvido = computador.menorLance
+        val menorValorDevolvido = console.menorLance
 
-        assertEquals(2000.00, menorValorDevolvido, 0.0001)
+        assertEquals(1000.00, menorValorDevolvido, 0.0001)
     }
 
 
     @Test
     fun deve_DevolveMenorLance_QuandoRecebeMaisDeUmLanceEmOrdemDecrescente() {
-        val computador = Leilao("Computador")
-        computador.propoe(Lance(Usuario("Gustavo"), 2000.00))
-        computador.propoe(Lance(Usuario("Maria"), 1000.00))
+        console.propoe(Lance(usuarioMaria, 2000.00))
+        console.propoe(Lance(usuarioGustavo, 1000.00))
 
 
-        val menorLanceDevolvido = computador.menorLance
+        val menorLanceDevolvido = console.menorLance
 
         assertEquals(1000.00, menorLanceDevolvido, 0.0001)
     }

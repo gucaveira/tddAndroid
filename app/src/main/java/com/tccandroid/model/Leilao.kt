@@ -18,12 +18,19 @@ data class Leilao(
     }
 
     fun propoe(lance: Lance) {
-        val lanceValor = lance.valor
-        if (lanceValor > maiorLance) {
-            maiorLance = lanceValor
-        }
+        calculaMairLance(lance.valor)
+        calculaMenorLance(lance.valor)
+    }
+
+    private fun calculaMenorLance(lanceValor: Double) {
         if (lanceValor < menorLance) {
             menorLance = lanceValor
+        }
+    }
+
+    private fun calculaMairLance(lanceValor: Double) {
+        if (lanceValor > maiorLance) {
+            maiorLance = lanceValor
         }
     }
 }
