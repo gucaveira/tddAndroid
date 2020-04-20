@@ -2,7 +2,6 @@ package com.tccandroid.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
-import java.util.*
 
 @Parcelize
 data class Leilao(
@@ -33,6 +32,10 @@ data class Leilao(
     }
 
     fun tresMaioresLance(): List<Lance> {
-        return lances.subList(0, 3)
+        var quantidadeMaximaLances = lances.size
+        if (quantidadeMaximaLances > 3) {
+            quantidadeMaximaLances = 3
+        }
+        return lances.subList(0, quantidadeMaximaLances)
     }
 }

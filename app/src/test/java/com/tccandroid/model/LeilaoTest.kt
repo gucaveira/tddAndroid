@@ -96,4 +96,57 @@ class LeilaoTest {
         assertEquals(200.00, tresMaioresLancesDevolvidos[1].valor, delta)
         assertEquals(100.00, tresMaioresLancesDevolvidos[2].valor, delta)
     }
+
+    @Test
+    fun deve_DevolverTresMaioresLances_QuandoNaoRecebeLances() {
+        val tresMaioresLanceDevolvido = console.tresMaioresLance()
+
+        assertEquals(0, tresMaioresLanceDevolvido.size)
+    }
+
+    @Test
+    fun DevolverTresMaioresLances_QuandoRecebeUmLaces() {
+        console.propoe(Lance(usuarioGustavo, 100.00))
+
+        val tresMaioresLanceDevolvido = console.tresMaioresLance()
+
+        assertEquals(1, tresMaioresLanceDevolvido.size)
+        assertEquals(100.00, tresMaioresLanceDevolvido[0].valor, delta)
+    }
+
+
+    @Test
+    fun DevolverTresMaioresLances_QuandoRDoisLaces() {
+        console.propoe(Lance(usuarioGustavo, 100.00))
+        console.propoe(Lance(usuarioMaria, 200.00))
+
+        val tresMaioresLanceDevolvido = console.tresMaioresLance()
+
+        assertEquals(2, tresMaioresLanceDevolvido.size)
+        assertEquals(200.00, tresMaioresLanceDevolvido[0].valor, delta)
+        assertEquals(100.00, tresMaioresLanceDevolvido[1].valor, delta)
+    }
+
+    @Test
+    fun deve_DevolverTresMaioresLances_QuandoRecebeMaisDeTresLances() {
+        console.propoe(Lance(usuarioGustavo, 300.0))
+        console.propoe(Lance(usuarioMaria, 400.0))
+        console.propoe(Lance(usuarioGustavo, 500.0))
+        console.propoe(Lance(usuarioMaria, 600.0))
+
+        val tresMaioresLancesDevolvidosParaQuatroLances = console.tresMaioresLance()
+
+        assertEquals(3, tresMaioresLancesDevolvidosParaQuatroLances.size.toLong())
+        assertEquals(600.0, tresMaioresLancesDevolvidosParaQuatroLances[0].valor, delta)
+        assertEquals(500.0, tresMaioresLancesDevolvidosParaQuatroLances[1].valor, delta)
+        assertEquals(400.0, tresMaioresLancesDevolvidosParaQuatroLances[2].valor, delta)
+        console.propoe(Lance(usuarioGustavo, 700.0))
+
+        val tresMaioresLancesDevolvidosParaCincoLances = console.tresMaioresLance()
+
+        assertEquals(3, tresMaioresLancesDevolvidosParaCincoLances.size.toLong())
+        assertEquals(700.0, tresMaioresLancesDevolvidosParaCincoLances[0].valor, delta)
+        assertEquals(600.0, tresMaioresLancesDevolvidosParaCincoLances[1].valor, delta)
+        assertEquals(500.0, tresMaioresLancesDevolvidosParaCincoLances[2].valor, delta)
+    }
 }
