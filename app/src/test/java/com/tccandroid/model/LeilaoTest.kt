@@ -149,4 +149,20 @@ class LeilaoTest {
         assertEquals(600.0, tresMaioresLancesDevolvidosParaCincoLances[1].valor, delta)
         assertEquals(500.0, tresMaioresLancesDevolvidosParaCincoLances[2].valor, delta)
     }
+
+    @Test
+    fun deve_DevolverValorZeroParaMaiorLance_QuandoNaoTiverLances() {
+
+        val maiorLanceDevolvido = console.maiorLance
+
+        assertEquals(0.0, maiorLanceDevolvido, delta)
+    }
+
+    @Test
+    fun deve_DevolverValorZeroParaMenorLance_QuandoNaoTiverLances() {
+
+        val menorLanceDevolvido = console.menorLance
+
+        assertEquals(0.0, menorLanceDevolvido, delta)
+    }
 }
