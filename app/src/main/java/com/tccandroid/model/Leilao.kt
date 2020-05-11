@@ -12,6 +12,9 @@ data class Leilao(
 ) : Parcelable {
 
     fun propoe(lance: Lance) {
+        if (maiorLance > lance.valor) {
+            return
+        }
         lances.add(lance)
         if (lances.size == 1) {
             maiorLance = lance.valor
@@ -42,5 +45,9 @@ data class Leilao(
             quantidadeMaximaLances = 3
         }
         return lances.subList(0, quantidadeMaximaLances)
+    }
+
+    fun quantidadeLances(): Int {
+        return lances.size
     }
 }

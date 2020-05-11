@@ -73,17 +73,6 @@ class LeilaoTest {
     }
 
     @Test
-    fun deve_DevolveMenorLance_QuandoRecebeMaisDeUmLanceEmOrdemDecrescente() {
-        console.propoe(Lance(usuarioMaria, 2000.00))
-        console.propoe(Lance(usuarioGustavo, 1000.00))
-
-
-        val menorLanceDevolvido = console.menorLance
-
-        assertEquals(1000.00, menorLanceDevolvido, delta)
-    }
-
-    @Test
     fun deve_DevolverTresMaioresLances_QuandoRecebeExatosTresLances() {
         console.propoe(Lance(usuarioGustavo, 100.00))
         console.propoe(Lance(usuarioMaria, 200.00))
@@ -164,5 +153,15 @@ class LeilaoTest {
         val menorLanceDevolvido = console.menorLance
 
         assertEquals(0.0, menorLanceDevolvido, delta)
+    }
+
+    @Test
+    fun naoDeve_AdicionarLance_QuandoLanceForMenorQueMaiorLance() {
+        console.propoe(Lance(usuarioGustavo, 200.00))
+        console.propoe(Lance(usuarioMaria, 100.00))
+
+        val quantidadeLancesDevolvido = console.quantidadeLances()
+
+        assertEquals(1, quantidadeLancesDevolvido)
     }
 }
